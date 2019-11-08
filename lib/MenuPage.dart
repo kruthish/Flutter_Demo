@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
 import 'ImageDetails.dart';
+import 'UserList.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -39,11 +40,13 @@ class _MenuState extends State<Menu> {
            },
          ),
          ListTile(
-           leading: Icon(Icons.info),
-           title: Text('Info'),
-           enabled: false,
+           leading: Icon(Icons.list),
+           title: Text('UserList'),
+           enabled: true,
            onTap: (){
-             
+             Navigator.push(context, 
+             MaterialPageRoute(builder: (context) => UserList())
+             );
            },
          ),
          ListTile(
