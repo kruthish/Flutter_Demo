@@ -39,9 +39,9 @@ class _UserListState extends State<UserList> {
           itemCount: userList.length,
           itemBuilder: (BuildContext context, int position){
             return Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(2.0),
               child: Container(
-                color: Colors.blue,
+                color: Colors.blueGrey,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: 
@@ -73,7 +73,7 @@ class _UserListState extends State<UserList> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text('Email: ${userList[position]["email"]}'),
-                        )
+                          )
                           ],
                         ),
                       ),
