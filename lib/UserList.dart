@@ -1,3 +1,4 @@
+// import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -11,11 +12,12 @@ class UserList extends StatefulWidget {
 class _UserListState extends State<UserList> {
   List userList = [];
   void requestForData() async{
-    String requestUrl = "https://jsonplaceholder.typicode.com/posts";
+    String requestUrl = 'https://reqres.in/api/users?page=2';
+    // "https://jsonplaceholder.typicode.com/posts";
     http.Response response = await http.get(requestUrl);
     if (response.body != null){
       setState(() {
-        userList = json.decode(response.body);  
+        userList = (json.decode(response.body))["data"];
       });
     }
   }
@@ -31,22 +33,61 @@ class _UserListState extends State<UserList> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Users list"),
+          backgroundColor: Colors.black,
         ),
-        body: ListView.builder(
+        body: new ListView.builder(
           itemCount: userList.length,
           itemBuilder: (BuildContext context, int position){
-            return Container(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('${userList[position]["title"]}'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('${userList[position]["body"]}'),
-                  ),
-                ],
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                color: Colors.blue,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: 
+                  <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CircleAvatar(
+                        radius: 50.0,
+                        backgroundImage: NetworkImage("${userList[position]["avatar"]}"),
+                      ),
+                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: Image(
+                    //     image: NetworkImage("${userList[position]["avatar"]}"),
+                    //   ),
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Container(
+                        // color: Colors.grey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('Name: ${userList[position]["first_name"]} ${userList[position]["last_name"]}' ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('Email: ${userList[position]["email"]}'),
+                        )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                  // List.generate(1, (int index){
+                  //   return new ListTile(
+                  //     title: Text("item  #$index"),
+                  //     onTap: (){
+                  //       print(index);
+                  //     },
+                  //   );
+                  // })
+                ),
               ),
             );
           },
