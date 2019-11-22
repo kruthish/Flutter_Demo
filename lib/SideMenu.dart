@@ -23,7 +23,7 @@ class _SideMenuState extends State<SideMenu> {
                 child: Text('Menu Items'),
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  image: NetworkImage("https://jsonplaceholder.typicode.com/posts"),
+                  // image: NetworkImage("https://jsonplaceholder.typicode.com/posts"),
                   color: Colors.blue,
                 ),
               ),

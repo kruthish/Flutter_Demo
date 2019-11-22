@@ -2,8 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:sampleproject/LoginPage.dart';
 import 'package:sampleproject/MenuPage.dart';
-import 'package:sampleproject/SideMenu.dart';
+// import 'package:sampleproject/SideMenu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sampleproject/RenderAssets.dart';
 
 
 void main() => runApp(MyApp());
@@ -41,7 +42,8 @@ static Future<bool> isCredentialsAvailable() async{
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: SideMenu(),
+      home: LoginPage(title: 'Login'),
+      // SideMenu(),
     );
   }
 }

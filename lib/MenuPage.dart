@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'HomePage.dart';
 import 'ImageDetails.dart';
 import 'UserList.dart';
+import 'RenderAssets.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -52,9 +53,10 @@ class _MenuState extends State<Menu> {
          ListTile(
            leading: Icon(Icons.dashboard),
            title: Text('Dashboard'),
-           enabled: false,
+           enabled: true,
            onTap: (){
-             
+             Navigator.push(context, MaterialPageRoute(builder: (context) => AssetRenderer())
+             );
            },
          ),
        ],
